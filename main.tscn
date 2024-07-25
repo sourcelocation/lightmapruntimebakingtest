@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://cokmajsuqmuop"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_botx2"]
+[ext_resource type="Script" path="res://block.gd" id="2_the4a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7iock"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8qpjk"]
+lightmap_size_hint = Vector2i(52, 52)
+add_uv2 = true
+size = Vector2(10, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xvpkb"]
+lightmap_size_hint = Vector2i(14, 21)
+add_uv2 = true
+
+[sub_resource type="Environment" id="Environment_1pj0r"]
+background_energy_multiplier = 0.0
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_botx2")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.999997, -0.00146747, 0.00212343, 0, 0.822662, 0.568531, -0.00258117, -0.568529, 0.822659, 0.0457377, 4.47631, 7.06589)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.544708, -0.463478, 0.698914, 0.291128, 0.677069, 0.675886, -0.786472, 0.571634, -0.233873, 0, 3.57822, 0)
+light_energy = 0.0
+light_bake_mode = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.28284, 0, 0, 0, 2.28284, 0, 0, 0, 2.28284, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_7iock")
+mesh = SubResource("PlaneMesh_8qpjk")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 3.60721, 0, 0, 0, 1, 0, 1.70045, 0)
+mesh = SubResource("BoxMesh_xvpkb")
+script = ExtResource("2_the4a")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 6.22445e-08, 0, 4.92785e-09, -3.60721, 0, 0, 0, 1, 2.02928, 1.0517, 1.46062)
+mesh = SubResource("BoxMesh_xvpkb")
+script = ExtResource("2_the4a")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 5.32112e-15, 0, 0, 3.60721, 0, 0, 0, 1, -2.12131, -0.0680351, 1.72935)
+mesh = SubResource("BoxMesh_xvpkb")
+script = ExtResource("2_the4a")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0754116, 0.813751, 1.38383)
+light_color = Color(0.89, 0.89, 0.89, 1)
+light_energy = 2.0
+light_bake_mode = 1
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+use_denoiser = false
+texel_scale = 4.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1pj0r")
